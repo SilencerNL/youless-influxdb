@@ -1,13 +1,13 @@
 {
-  "name": "youless-influxdb",
+  "name": "youless-influxdb-importer",
   "version": "1.0.0",
-  "description": "Sending Youless metrics to InfluxDB using a Docker container",
+  "description": "Sending detailed Youless metrics to InfluxDB using a Docker container",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Tim de Pater <code@trafex.nl>",
-  "repository": "https://github.com/TrafeX/youless-influxdb",
+  "author": "Roy Sonnega",
+  "repository": "https://github.com/silencernl/youless-influxdb-importer",
   "license": "MIT",
   "dependencies": {
     "request": "^2.88.0"
