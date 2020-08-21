@@ -6,23 +6,24 @@ const updateStats = () => {
     request.get({
         method: 'GET',
         timeout: 1000,
-        uri: process.env.YOULESS_URI + '/a?f=j'
+        uri: process.env.YOULESS_URI + '/e'
     }, (error, response, body) => {
         if (error || response.statusCode !== 200) {
             console.error("Couldn't reach Youless: " + error);
             return;
         }
 
-        response = JSON.parse(response.body);
-        if (process.env.YOULESS_GAS) {
-            body =
-                'current_lph,source=youless value=' + response['pwr'] + '\n' +
-                'total_m3,source=youless value=' + response['cnt'].replace(/ /g, '').replace(/,/g, '.');
-        } else {
-            body =
-                'current_watt,source=youless value=' + response['pwr'] + '\n' +
-                'total_kwh,source=youless value=' + response['cnt'].replace(/ /g, '').replace(/,/g, '.');
-        }
+        response = JSON.parse(response.body.replace('[', '').replace(']', ''));
+
+        body =
+            'current_watt,source=youless value=' + response['pwr'] + '\n' +
+            'consumption_low,source=youless value=' + response['p1'] + '\n' +
+            'consumption_high,source=youless value=' + response['p2'] + '\n' +
+            'production_low,source=youless value=' + response['n1'] + '\n' +
+            'production_high,source=youless value=' + response['n2'] + '\n' +
+            'total_kwh,source=youless value=' + response['net'] + '\n' +
+            'total_gas,source=youless value=' + response['gas'];
+
         request({
             method: 'POST',
             uri: process.env.INFLUXDB_URI,
