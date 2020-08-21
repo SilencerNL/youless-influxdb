@@ -1,7 +1,7 @@
 FROM node:12.4-alpine
 
-LABEL Maintainer="Tim de Pater <code@trafex.nl>" \
-      Description="Sending the Youless metrics to InfluxDB"
+LABEL Maintainer="Roy Sonnega" \
+      Description="Sending detailed Youless metrics to InfluxDB"
 
 # Create workdir
 RUN mkdir -p /usr/src/app
