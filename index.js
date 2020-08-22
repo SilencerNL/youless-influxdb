@@ -15,12 +15,14 @@ const updateStats = () => {
 
         response = JSON.parse(response.body.replace('[', '').replace(']', ''));
 
-        body =
+         body =
             'current_watt,source=youless value=' + response['pwr'] + '\n' +
             'consumption_low,source=youless value=' + response['p1'] + '\n' +
             'consumption_high,source=youless value=' + response['p2'] + '\n' +
+            'consumption_total,source=youless value=' + (response['p1'] + response['p2']) + '\n' +
             'production_low,source=youless value=' + response['n1'] + '\n' +
             'production_high,source=youless value=' + response['n2'] + '\n' +
+            'production_total,source=youless value=' + (response['n1'] + response['n2']) + '\n' +
             'total_kwh,source=youless value=' + response['net'] + '\n' +
             'total_gas,source=youless value=' + response['gas'];
 
