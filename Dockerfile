@@ -3,8 +3,8 @@ FROM node:12.4-alpine
 LABEL Maintainer="Roy Sonnega" \
       Description="Sending detailed Youless metrics to InfluxDB"
       
-ENV YOULESS_URI=http://<Youless IP> \
-    INFLUXDB_URI=http://<InfluxDB IP>:8086/write?db=youless
+ENV YOULESS_URI=http://192.168.1.200 \
+    INFLUXDB_URI=http://192.168.1.201:8086/write?db=youless
 
 # Create workdir
 RUN mkdir -p /usr/src/app
