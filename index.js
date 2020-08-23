@@ -39,7 +39,7 @@ const updateStats = () => {
             console.log('Send status to InfluxDB, status: ' + response.statusCode);
         });
 
-        setTimeout(updateStats, 5000);
+        setTimeout(updateStats, 10000);
     });
 };
 updateStats();
