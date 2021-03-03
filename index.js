@@ -13,7 +13,7 @@ const updateStats = () => {
             return;
         }
 
-        response = JSON.parse(response.body.replace('[', '').replace(']', ''));
+        response = JSON.parse(response.body.replace('[', '').replace(']', '').replace('*', '0'));
 
          body =
             'current_watt,source=youless value=' + response['pwr'] + '\n' +
